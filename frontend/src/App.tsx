@@ -2,6 +2,11 @@ import React from 'react';
 import logo from './logo.svg'; 
 import './App.css';
 
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./Home/Home";
+import Products from "./Products/Products";
+
+
 function App() {
   const openMenu = () => {
     document.querySelector(".sidebar")?.classList.add("open");
@@ -12,6 +17,7 @@ function App() {
   }
 
   return (
+    <Router>
     <div className="grid-container">
       <header className="header">
         <div className="brand">
@@ -20,8 +26,8 @@ function App() {
         </div>
         <img src={logo} className="App-logo" alt="logo" /> 
         <div className="header-links">
-          <a href="/cart">Cart</a>
-          <a href="/signin">Sign In</a>
+          <Link to="/">Home</Link>
+          <Link to="/catalog">Catalog</Link>
          </div>
       </header>
 
@@ -35,6 +41,11 @@ function App() {
       </aside>
 
       <main className="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="catalog" element={<Products />} />
+        </Routes>
+        
         <div className="content">
           <ul className="products">
             <li>
@@ -89,6 +100,7 @@ function App() {
         &copy; 2025 Threatening Snow
       </footer>
     </div>
+    </Router>
   );
 }
 
