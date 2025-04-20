@@ -32,6 +32,7 @@ function Products() {
       <div className="content">
         <ul className="products">
           {products.map((product) => (
+            <li key={product.id}>
             <li>
               <div className="product">
                 <img
